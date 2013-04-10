@@ -229,7 +229,7 @@ coord_t NodeKdTree::getMedianX ( std::vector<NodeId> & ids )
 {
 	size_t n = ids.size() / 2;
 	std::nth_element(ids.begin(), ids.begin()+n, ids.end(),
-		[&](NodeId a, NodeId b)
+		[this](NodeId a, NodeId b)
 		{
 			return (this->points[a.getRaw()].x < this->points[b.getRaw()].x);
 		}
@@ -241,7 +241,7 @@ coord_t NodeKdTree::getMedianY ( std::vector<NodeId> & ids )
 {
 	size_t n = ids.size() / 2;
 	std::nth_element(ids.begin(), ids.begin()+n, ids.end(),
-		[&](NodeId a, NodeId b)
+		[this](NodeId a, NodeId b)
 		{
 			return (this->points[a.getRaw()].y < this->points[b.getRaw()].y);
 		}

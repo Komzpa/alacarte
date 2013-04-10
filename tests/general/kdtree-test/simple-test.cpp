@@ -15,8 +15,8 @@ struct tree_test
 	tree_test(shared_ptr<std::vector<Node> > nodes)
 	: nodes(nodes)
 	{
-		tree = boost::make_shared<NodeKdTree>(nodes);
-		tree->buildTree();
+		tree = boost::make_shared<NodeKdTree>();
+		tree->buildTree(nodes);
 	}
 
 	void search(const FixedRect& r, const std::vector<int>& ids)
@@ -26,7 +26,7 @@ struct tree_test
 		tree->search(result, r);
 		BOOST_TEST_MESSAGE("Returned nodes: " << result->size());
 		BOOST_CHECK_EQUAL(result->size(), ids.size());
-		
+
 		std::sort(result->begin(), result->end(),
 				  [](NodeId first, NodeId second)
 					{
