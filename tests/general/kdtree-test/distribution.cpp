@@ -67,7 +67,7 @@ public:
 			if (!node->left && !node->right) {
 				leafSize.push_back(node->ids.size());
 				for (auto id : node->ids)
-					nodes.push_back(points[id.getRaw()]);
+					nodes.push_back(points->at(id.getRaw()));
 				continue;
 			}
 
